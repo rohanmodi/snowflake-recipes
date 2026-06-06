@@ -1,0 +1,32 @@
+# --- Secrets & credentials (never commit) ---
+*.p8
+*.pem
+*.key
+*.pkcs8
+*.p12
+.env
+.env.*
+config.toml
+connections.toml
+credentials*
+*secret*
+
+# --- Local / account-specific data ---
+*.eml
+*.csv
+out/
+output/
+private/
+scratch/
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# --- Misc ---
+*.log
+/tmp/
