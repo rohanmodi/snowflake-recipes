@@ -24,12 +24,30 @@ When working in this project, the agent follows these rules:
 - **Tests must pass.** Every `dbt build` must end with zero failures before considering work complete.
 - **No destructive operations** on objects outside `COCO_DEMO`.
 
+## Skills
+
+This project includes custom CoCo skills in `.cortex/skills/` to accelerate common dbt workflows.
+Invoke them by name (`/dbt-build`, `/add-model`, etc.) or let CoCo auto-trigger them from your request.
+
+| Skill | When to use |
+|-------|-------------|
+| **dbt-build** | Run the pipeline (`dbt deps` + `dbt build`), diagnose failures, re-run after fixes. Use any time you say "build", "run dbt", "test models", or "refresh". |
+| **add-model** | Scaffold a new staging view or mart table with correct naming, schema YAML, and baseline tests. Use when you want to add a dimension, fact table, or staging view. |
+| **add-test** | Add data quality tests (unique, not_null, accepted_values, relationships) to an existing model's schema YAML. Use when you say "add tests" or "validate column". |
+| **query-model** | Preview data from a built model via SQL. Use when you want to see rows, check counts, or run ad-hoc queries against `COCO_DEMO.DBT_TPCH`. |
+
 ## Project Layout
 
 ```
 Getting-Started-With-CoCo/
 ├── AGENTS.md              ← you are here (CoCo project definition)
 ├── README.md              ← human-readable project overview
+├── .cortex/
+│   └── skills/            ← CoCo skills for dbt workflows
+│       ├── dbt-build/SKILL.md
+│       ├── add-model/SKILL.md
+│       ├── add-test/SKILL.md
+│       └── query-model/SKILL.md
 └── dbt_tpch/              ← the dbt project
     ├── dbt_project.yml
     ├── packages.yml
