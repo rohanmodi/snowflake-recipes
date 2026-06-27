@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: tpch
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    description: >
+      TPC-H benchmark dataset (scale factor 1) from the Snowflake sample data share.
+    tables:
+      - name: CUSTOMER
+        description: Customer dimension table (150,000 rows).
+      - name: ORDERS
+        description: Order header table (1,500,000 rows).
+      - name: LINEITEM
+        description: Order line items (6,001,215 rows).

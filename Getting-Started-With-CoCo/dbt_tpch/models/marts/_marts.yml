@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: >
+      Customer dimension enriched with order aggregates
+      (total orders, total revenue, first/last order dates).
+    columns:
+      - name: customer_key
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_orders
+    description: >
+      Order-grain fact table with computed revenue
+      (extended_price * (1 - discount) * (1 + tax)) and line item count.
+    columns:
+      - name: order_key
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: customer_key
+        description: Foreign key to dim_customers.
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_key
+      - name: order_revenue
+        description: Total revenue for the order.
+        tests:
+          - not_null
