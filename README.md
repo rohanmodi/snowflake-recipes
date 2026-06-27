@@ -9,6 +9,7 @@ its own README and `setup` / `verify` / `teardown` scripts. No external tools.
 | Recipe | What it does |
 |---|---|
 | [**ai-usage-daily-email**](ai-usage-daily-email/) | A daily email summarizing your **Cortex AI** usage — credits, $, an optional budget tracker, and month-to-date breakdowns by service, function, model/agent, and **user**. Built entirely from `ACCOUNT_USAGE` + an email notification integration + a scheduled task. |
+| [**Getting-Started-With-CoCo**](Getting-Started-With-CoCo/) | A **Cortex Code (CoCo) project** that builds a dbt-on-Snowflake data pipeline over TPC-H. Includes `AGENTS.md`, staging views, mart tables, schema tests, and a docs folder — designed to teach beginners how to use CoCo for dbt development. |
 
 _More recipes coming — cost dashboards, budget alerts, and other Snowflake utilities._
 
