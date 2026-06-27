@@ -1,0 +1,15 @@
+name: coco_demo_tpch
+version: "1.0.0"
+
+profile: coco_demo
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  coco_demo_tpch:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

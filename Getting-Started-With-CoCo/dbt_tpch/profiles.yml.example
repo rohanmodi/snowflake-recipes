@@ -1,0 +1,18 @@
+# profiles.yml.example
+# Copy this file to ~/.dbt/profiles.yml and fill in your credentials.
+# Do NOT commit the real profiles.yml — it contains secrets.
+
+coco_demo:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "<your_account>"           # e.g. abc12345.us-east-1
+      user: "<your_user>"                 # e.g. JSMITH
+      password: "<your_password>"         # or remove & use authenticator below
+      # authenticator: externalbrowser    # uncomment for SSO / browser-based auth
+      role: "<your_role>"                 # e.g. SYSADMIN
+      warehouse: "<your_warehouse>"       # e.g. COMPUTE_WH
+      database: COCO_DEMO
+      schema: DBT_TPCH
+      threads: 4

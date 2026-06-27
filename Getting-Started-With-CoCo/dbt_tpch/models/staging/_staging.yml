@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Cleaned customer dimension from TPCH CUSTOMER table.
+    columns:
+      - name: customer_key
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_orders
+    description: Cleaned order headers from TPCH ORDERS table.
+    columns:
+      - name: order_key
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: customer_key
+        description: Foreign key to stg_customers.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_key
+
+  - name: stg_lineitem
+    description: Cleaned line items from TPCH LINEITEM table.
+    columns:
+      - name: order_key
+        description: Foreign key to stg_orders.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_key
+      - name: line_number
+        description: Line number within the order.
+        tests:
+          - not_null
